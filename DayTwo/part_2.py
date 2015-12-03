@@ -1,6 +1,6 @@
 from solvers import Solvers
 
 s = Solvers()
-answer = s.calculateTotalRibbon('test.txt')
+answer = s.calculateTotalRibbon('input.txt')
 print answer
 

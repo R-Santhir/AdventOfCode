@@ -1,5 +1,5 @@
 from solvers import Solvers
 
 s = Solvers()
-inBasement = s.enteredBasement('test.txt')
+inBasement = s.enteredBasement('input.txt')
 print inBasement
