@@ -1,5 +1,5 @@
 from solvers import Solvers
 
 s = Solvers()
-answer = s.moveXY('input.txt')
+answer = s.moveRoboAndSanta('input.txt')
 print answer
