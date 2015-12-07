@@ -70,3 +70,33 @@ class Solvers(object):
                 self.lightSwitch(instr['xy1'], instr['xy2'], instr['OnOff'], lightGrid)
         
         return sum(lightGrid)
+
+    def lightDial(self,xy1, xy2, setting, grid):
+        start = self.getIndxfromXY(xy1)
+        end = self.getIndxfromXY(xy2)
+        
+        row_cursor = start['row']
+        while row_cursor <= end['row']:
+            col_cursor = start['col'] 
+            while col_cursor <= end['col']:
+                grid[row_cursor*999 + col_cursor] = max(0, setting + grid[row_cursor*999 + col_cursor])
+                col_cursor += 1
+            row_cursor += 1
+
+    def NordiclightShow(self, fileName):
+        instructions = open(fileName)
+        lightGrid = [0] * 1000000
+
+        for line in instructions:
+            instr = self.obtainIndices(line)
+
+            if instr['toggle']:
+                setting = 2
+            elif instr['OnOff']:
+                setting = 1
+            else:
+                setting = -1
+    
+            self.lightDial(instr['xy1'], instr['xy2'], setting, lightGrid)
+        
+        return sum(lightGrid)
